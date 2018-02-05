@@ -4,3 +4,4 @@ var c3 = "king";
 var c4 = "king";
 
 console.log("User flipped " + c1);
+console.log("hey")
