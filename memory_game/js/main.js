@@ -32,22 +32,27 @@ var checkForMatch = function() {
 		}
 }
 }
-var flipCard = function(cardId){
+var flipCard = function(){
+	cardId = this.getAttribute('data-id');
 	console.log("User flipped " + cards[cardId].rank);
 	cardsInPlay.push(cards[cardId].rank);
 	console.log(cards[cardId].cardImage);
 	console.log(cards[cardId].suit);
+	this.setAttribute('src' , cards[cardId].cardImage);
 	checkForMatch();
-	//if (cardsInPlay.length === 2) {
-		//if (cardsInPlay[0] === cardsInPlay[1]) {
-			//alert("You found a match!");
-		//} else {
-			//alert("Sorry, try again");
-	//}
-//}
 }
-	flipCard (0);
-	flipCard (2);
+
+var createBoard = function(){
+	for(var i = 0; i < cards.length; i++) {
+		var cardImg = document.createElement("img");
+		cardImg.setAttribute('src', 'images/back.png');
+		cardImg.setAttribute( 'data-id', i );
+		cardImg.addEventListener('click', flipCard);
+		document.getElementById('game-board').appendChild(cardImg);
+	}
+}
+
+createBoard();
 
 
 
